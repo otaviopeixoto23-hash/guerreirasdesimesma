@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guerreira de Si Mesma — Guia para Mães Solteiras</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5EDE4;
+    --blush: #E8C9B8;
+    --rose: #C4856A;
+    --burgundy: #6B2737;
+    --dark-wine: #3D1520;
+    --warm-white: #FBF6F1;
+    --text-dark: #2A1A1F;
+    --text-mid: #5C3D45;
+    --gold: #C9A96E;
+    --gold-light: #E8D5B0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--warm-white);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 100vh;
+    background: var(--cream);
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 70% 50%, rgba(196,133,106,0.12) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 60px 80px 80px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Jost', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--burgundy);
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.2s;
+  }
+
+  .badge::before {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 1px;
+    background: var(--rose);
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px, 5.5vw, 88px);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--burgundy);
+    margin-bottom: 8px;
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards 0.4s;
+  }
+
+  .hero-subtitle-book {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(16px, 1.8vw, 22px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--rose);
+    margin-bottom: 32px;
+    letter-spacing: 0.5px;
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards 0.5s;
+  }
+
+  .hero-divider {
+    width: 60px;
+    height: 1px;
+    background: var(--rose);
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.6s;
+  }
+
+  .hero-desc {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--text-mid);
+    max-width: 480px;
+    margin-bottom: 48px;
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards 0.7s;
+  }
+
+  .hero-cta-group {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards 0.9s;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: var(--burgundy);
+    color: var(--cream);
+    padding: 18px 42px;
+    font-family: 'Jost', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    max-width: 340px;
+  }
+
+  .btn-primary::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0.1);
+    transform: translateX(-100%);
+    transition: transform 0.4s ease;
+  }
+
+  .btn-primary:hover::after { transform: translateX(0); }
+  .btn-primary:hover { background: var(--dark-wine); transform: translateY(-1px); box-shadow: 0 8px 30px rgba(107,39,55,0.25); }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--burgundy);
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s;
+    width: fit-content;
+  }
+  .btn-secondary:hover { border-color: var(--rose); }
+
+  .hero-right {
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    animation: fadeIn 1.2s ease forwards 0.6s;
+  }
+
+  .hero-image-wrap {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #D4A898 0%, #C4856A 50%, #8B4A5C 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-image-wrap::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Ccircle cx='40' cy='40' r='1' fill='rgba(255,255,255,0.15)'/%3E%3C/svg%3E");
+  }
+
+  .book-mockup {
+    position: relative;
+    z-index: 2;
+    width: 280px;
+    background: var(--cream);
+    box-shadow: -20px 20px 60px rgba(0,0,0,0.3), 20px -10px 40px rgba(0,0,0,0.15);
+    transform: perspective(800px) rotateY(-8deg);
+    transition: transform 0.4s ease;
+  }
+
+  .book-mockup:hover { transform: perspective(800px) rotateY(-2deg) scale(1.02); }
+
+  .book-cover {
+    padding: 40px 32px;
+    background: var(--cream);
+    min-height: 380px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    border: 8px solid var(--cream);
+    outline: 2px solid var(--blush);
+  }
+
+  .book-cover-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--burgundy);
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+
+  .book-cover-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 12px;
+    font-style: italic;
+    color: var(--rose);
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+  }
+
+  .book-illustration {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #E8C9B8, #C4856A);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px auto;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .woman-svg { width: 100%; height: 100%; }
+
+  .book-badge-cover {
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--burgundy);
+    font-weight: 600;
+    margin-top: 16px;
+  }
+
+  .floating-tag {
+    position: absolute;
+    background: var(--burgundy);
+    color: var(--cream);
+    padding: 8px 16px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    top: -12px;
+    right: -12px;
+    animation: float 3s ease-in-out infinite;
+  }
+
+  /* ===== SOCIAL PROOF BAR ===== */
+  .proof-bar {
+    background: var(--burgundy);
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
+    overflow: hidden;
+  }
+
+  .proof-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--cream);
+  }
+
+  .proof-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--gold-light);
+    line-height: 1;
+  }
+
+  .proof-label {
+    font-size: 12px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    opacity: 0.85;
+    line-height: 1.4;
+  }
+
+  .proof-sep { width: 1px; height: 40px; background: rgba(255,255,255,0.2); }
+
+  /* ===== WHAT'S INSIDE ===== */
+  .section {
+    padding: 100px 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--rose);
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 3.5vw, 54px);
+    font-weight: 300;
+    color: var(--burgundy);
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+
+  .section-title em {
+    font-style: italic;
+    font-weight: 300;
+  }
+
+  .section-desc {
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--text-mid);
+    line-height: 1.8;
+    max-width: 560px;
+    margin-bottom: 60px;
+  }
+
+  /* Chapters grid */
+  .chapters-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--blush);
+    border: 1px solid var(--blush);
+  }
+
+  .chapter-card {
+    background: var(--warm-white);
+    padding: 40px 32px;
+    transition: background 0.3s, transform 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .chapter-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--burgundy);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+    transform-origin: left;
+  }
+
+  .chapter-card:hover::before { transform: scaleX(1); }
+  .chapter-card:hover { background: var(--cream); }
+
+  .chapter-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 56px;
+    font-weight: 300;
+    color: var(--blush);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .chapter-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--burgundy);
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+
+  .chapter-desc {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--text-mid);
+  }
+
+  /* ===== TESTIMONIALS ===== */
+  .testimonials-section {
+    background: var(--cream);
+    padding: 100px 0;
+  }
+
+  .testimonials-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 80px;
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 60px;
+  }
+
+  .testimonial-card {
+    background: var(--warm-white);
+    padding: 36px 32px;
+    position: relative;
+    transition: box-shadow 0.3s;
+  }
+
+  .testimonial-card:hover {
+    box-shadow: 0 8px 40px rgba(107,39,55,0.1);
+  }
+
+  .quote-mark {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 72px;
+    font-weight: 600;
+    color: var(--blush);
+    line-height: 0.6;
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .testimonial-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--text-dark);
+    margin-bottom: 28px;
+  }
+
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .author-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--blush), var(--rose));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+    flex-shrink: 0;
+  }
+
+  .author-info strong {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--burgundy);
+    letter-spacing: 0.5px;
+  }
+
+  .author-info span {
+    font-size: 12px;
+    color: var(--rose);
+    font-weight: 300;
+  }
+
+  .stars {
+    color: var(--gold);
+    font-size: 14px;
+    margin-bottom: 12px;
+    letter-spacing: 2px;
+  }
+
+  /* ===== FOR YOU ===== */
+  .for-you {
+    padding: 100px 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .for-you-visual {
+    position: relative;
+  }
+
+  .visual-box {
+    background: linear-gradient(135deg, var(--cream) 0%, var(--blush) 100%);
+    padding: 60px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .visual-box::after {
+    content: 'MULHER VOCÊ É CAPAZ';
+    position: absolute;
+    bottom: -10px;
+    right: -20px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 80px;
+    font-weight: 700;
+    color: rgba(196,133,106,0.1);
+    white-space: nowrap;
+    transform: rotate(-5deg);
+    pointer-events: none;
+  }
+
+  .big-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--burgundy);
+    line-height: 1.5;
+    position: relative;
+    z-index: 2;
+  }
+
+  .for-you-list {
+    list-style: none;
+  }
+
+  .for-you-list li {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--blush);
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--text-mid);
+    line-height: 1.6;
+  }
+
+  .for-you-list li::before {
+    content: '✦';
+    color: var(--rose);
+    font-size: 12px;
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+
+  .for-you-list li:first-child { border-top: 1px solid var(--blush); }
+
+  /* ===== CTA FINAL ===== */
+  .cta-section {
+    background: var(--burgundy);
+    padding: 100px 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(196,133,106,0.2) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cta-section::after {
+    content: '"';
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 500px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.02);
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .cta-tag {
+    display: inline-block;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: var(--gold-light);
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 8px 20px;
+    margin-bottom: 32px;
+  }
+
+  .cta-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(40px, 5vw, 72px);
+    font-weight: 300;
+    color: var(--cream);
+    line-height: 1.1;
+    margin-bottom: 24px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .cta-title em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .cta-subtitle {
+    font-size: 17px;
+    font-weight: 300;
+    color: rgba(245,237,228,0.75);
+    line-height: 1.8;
+    max-width: 560px;
+    margin: 0 auto 48px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .price-block {
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .price-from {
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    text-decoration: line-through;
+    letter-spacing: 1px;
+  }
+
+  .price-main {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 64px;
+    font-weight: 300;
+    color: var(--cream);
+    line-height: 1;
+    margin: 4px 0;
+  }
+
+  .price-main sup {
+    font-size: 28px;
+    vertical-align: super;
+  }
+
+  .price-note {
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 1px;
+  }
+
+  .btn-cta-final {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: var(--cream);
+    color: var(--burgundy);
+    padding: 20px 56px;
+    font-family: 'Jost', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 2;
+  }
+
+  .btn-cta-final:hover {
+    background: var(--warm-white);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+  }
+
+  .guarantee {
+    margin-top: 28px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--dark-wine);
+    padding: 40px 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .footer-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 300;
+    color: var(--blush);
+    letter-spacing: 1px;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 32px;
+  }
+
+  .footer-links a {
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: color 0.3s;
+  }
+
+  .footer-links a:hover { color: var(--blush); }
+
+  /* ===== ANIMATIONS ===== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  /* ===== SCROLL REVEAL ===== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 900px) {
+    .hero {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+    .hero-right { height: 60vw; }
+    .hero-left { padding: 60px 32px; }
+    .section { padding: 60px 32px; }
+    .chapters-grid { grid-template-columns: 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .for-you { grid-template-columns: 1fr; padding: 60px 32px; gap: 40px; }
+    .cta-section { padding: 80px 32px; }
+    footer { padding: 32px; flex-direction: column; text-align: center; }
+    .proof-bar { gap: 24px; padding: 20px 24px; }
+    .proof-sep { display: none; }
+    .testimonials-inner { padding: 0 32px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="badge">Guia para Mães Solteiras</p>
+
+    <h1 class="hero-title">Guerreira<br>de Si<br>Mesma</h1>
+    <p class="hero-subtitle-book">O Guia Completo para Vencer na Vida</p>
+
+    <div class="hero-divider"></div>
+
+    <p class="hero-desc">
+      Você que acorda cedo, que dorme tarde, que sorri mesmo quando está cansada — este guia foi feito para você. Ferramentas práticas, reflexões profundas e encorajamento real para florescer em todas as áreas da sua vida.
+    </p>
+
+    <div class="hero-cta-group">
+      <a href="#cta" class="btn-primary">
+        ✦ Quero Meu Ebook Agora
+      </a>
+      <a href="#conteudo" class="btn-secondary">
+        Ver o que está dentro ↓
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-image-wrap">
+      <!-- Book Mockup -->
+      <div class="book-mockup">
+        <div class="floating-tag">Novo</div>
+        <div class="book-cover">
+          <p class="book-cover-sub">Guia para Mães Solteiras</p>
+          <div class="book-illustration">
+            <svg class="woman-svg" viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="70" cy="40" r="22" fill="#8B4A5C" opacity="0.6"/>
+              <ellipse cx="70" cy="100" rx="30" ry="38" fill="#8B4A5C" opacity="0.5"/>
+              <circle cx="70" cy="36" r="18" fill="#C4856A"/>
+              <ellipse cx="70" cy="38" rx="8" ry="10" fill="#B5714F"/>
+              <path d="M 50 70 Q 70 60 90 70 L 95 130 Q 70 125 45 130 Z" fill="#6B2737"/>
+              <!-- Hair -->
+              <path d="M 52 32 Q 55 15 70 14 Q 85 15 88 32 Q 85 20 70 19 Q 55 20 52 32 Z" fill="#3D1520"/>
+              <ellipse cx="70" cy="95" rx="28" ry="35" fill="#6B2737"/>
+            </svg>
+          </div>
+          <h2 class="book-cover-title">Guerreira<br>de Si Mesma</h2>
+          <p class="book-badge-cover">Mulher, Você é Capaz</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROOF BAR ===== -->
+<div class="proof-bar">
+  <div class="proof-item">
+    <div>
+      <div class="proof-number">+3.200</div>
+      <div class="proof-label">Mulheres<br>Transformadas</div>
+    </div>
+  </div>
+  <div class="proof-sep"></div>
+  <div class="proof-item">
+    <div>
+      <div class="proof-number">11</div>
+      <div class="proof-label">Capítulos<br>Transformadores</div>
+    </div>
+  </div>
+  <div class="proof-sep"></div>
+  <div class="proof-item">
+    <div>
+      <div class="proof-number">4.9★</div>
+      <div class="proof-label">Avaliação<br>Média</div>
+    </div>
+  </div>
+  <div class="proof-sep"></div>
+  <div class="proof-item">
+    <div>
+      <div class="proof-number">100%</div>
+      <div class="proof-label">Satisfação<br>Garantida</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== WHAT'S INSIDE ===== -->
+<section class="section" id="conteudo">
+  <div class="reveal">
+    <p class="section-label">O que você vai aprender</p>
+    <h2 class="section-title">Tudo que você precisa<br>para <em>florescer de verdade</em></h2>
+    <p class="section-desc">Cada capítulo foi pensado com carinho para te guiar em todas as dimensões da vida — da mente às finanças, dos filhos ao seu próprio cuidado.</p>
+  </div>
+
+  <div class="chapters-grid reveal">
+    <div class="chapter-card">
+      <div class="chapter-num">01</div>
+      <h3 class="chapter-title">Reconhecendo Sua Força Interior</h3>
+      <p class="chapter-desc">Você é mais forte do que imagina. Aprenda a enxergar suas qualidades e silenciar a voz que diz que você não é suficiente.</p>
+    </div>
+    <div class="chapter-card">
+      <div class="chapter-num">02</div>
+      <h3 class="chapter-title">Saúde Mental e Emocional</h3>
+      <p class="chapter-desc">Os 5 pilares do equilíbrio emocional para mães solteiras: autoconsciência, limites, rede de apoio, autocuidado e busca de ajuda.</p>
+    </div>
+    <div class="chapter-card">
+      <div class="chapter-num">03</div>
+      <h3 class="chapter-title">Finanças e Independência</h3>
+      <p class="chapter-desc">Orçamento familiar, renda extra, apps gratuitos e como construir sua reserva de emergência — mesmo começando do zero.</p>
+    </div>
+    <div class="chapter-card">
+      <div class="chapter-num">04</div>
+      <h3 class="chapter-title">Maternidade Solo com Amor</h3>
+      <p class="chapter-desc">Presença de qualidade, limites com carinho e como criar momentos de alegria que ficam para sempre na memória dos seus filhos.</p>
+    </div>
+    <div class="chapter-card">
+      <div class="chapter-num">05</div>
+      <h3 class="chapter-title">Carreira e Propósito</h3>
+      <p class="chapter-desc">Descubra como dar o próximo passo profissional mesmo com pouco tempo, e como transformar seus talentos em renda real.</p>
+    </div>
+    <div class="chapter-card">
+      <div class="chapter-num">06+</div>
+      <h3 class="chapter-title">E muito mais…</h3>
+      <p class="chapter-desc">Autoestima, relacionamentos, espiritualidade, rede de apoio e um plano de ação completo para os próximos 90 dias da sua vida.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOR YOU ===== -->
+<div class="for-you">
+  <div class="for-you-visual reveal">
+    <div class="visual-box">
+      <p class="big-quote">"Você não está sozinha. Você é capaz. E sua melhor fase ainda está por vir."</p>
+    </div>
+  </div>
+
+  <div class="reveal">
+    <p class="section-label">Este guia é para você que…</p>
+    <h2 class="section-title">Reconhece<br><em>essa história</em></h2>
+
+    <ul class="for-you-list">
+      <li>Cuida de tudo sozinha e às vezes sente que não aguenta mais</li>
+      <li>Quer ser financeiramente independente mas não sabe por onde começar</li>
+      <li>Sente culpa quando cuida de si mesma e coloca a si em segundo plano</li>
+      <li>Deseja dar o melhor para seus filhos, mas está exausta e sobrecarregada</li>
+      <li>Sabe que tem potencial, mas precisa de um empurrão e direção clara</li>
+      <li>Quer se reconectar com a mulher forte que existe dentro de você</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section class="testimonials-section">
+  <div class="testimonials-inner">
+    <div class="reveal">
+      <p class="section-label">Depoimentos reais</p>
+      <h2 class="section-title">O que outras mães<br><em>estão dizendo</em></h2>
+    </div>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <span class="quote-mark">"</span>
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">Este ebook chegou na hora certa. Eu estava me sentindo perdida e sem forças. Depois de ler, me lembrei que sou capaz de muito mais do que imaginava.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">A</div>
+          <div class="author-info">
+            <strong>Amanda S.</strong>
+            <span>Mãe solo de 2 filhos · São Paulo</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal">
+        <span class="quote-mark">"</span>
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">O capítulo de finanças mudou minha vida de verdade. Comecei a guardar R$50 por mês e hoje já tenho minha primeira reserva de emergência. Nunca achei que conseguiria.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">C</div>
+          <div class="author-info">
+            <strong>Carla M.</strong>
+            <span>Mãe solo de 3 filhos · Rio de Janeiro</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal">
+        <span class="quote-mark">"</span>
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">Chorei lendo o prefácio porque parecia que estava escrito pra mim. Finalmente me sinto acolhida e não tão sozinha nessa jornada. Recomendo para toda mãe solo.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">J</div>
+          <div class="author-info">
+            <strong>Juliana R.</strong>
+            <span>Mãe solo de 1 filho · Minas Gerais</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA FINAL ===== -->
+<section class="cta-section" id="cta">
+  <div class="cta-tag">Oferta especial</div>
+
+  <h2 class="cta-title">Sua transformação<br><em>começa hoje</em></h2>
+
+  <p class="cta-subtitle">
+    Você merece florescer. Não amanhã — agora. Acesse o guia completo e comece sua jornada de autoconhecimento, força e independência.
+  </p>
+
+  <div class="price-block">
+    <div class="price-from">De R$ 97,00</div>
+    <div class="price-main"><sup>R$</sup>27</div>
+    <div class="price-note">acesso imediato • download em PDF</div>
+  </div>
+
+  <a href="#" class="btn-cta-final">
+    ✦ Quero Meu Ebook Agora
+  </a>
+
+  <div class="guarantee">
+    🔒 Compra 100% segura &nbsp;·&nbsp; Garantia de 7 dias ou devolução total
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-brand">Guerreira de Si Mesma</div>
+  <div class="footer-links">
+    <a href="#">Política de Privacidade</a>
+    <a href="#">Termos de Uso</a>
+    <a href="#">Contato</a>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, 100);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  reveals.forEach(el => observer.observe(el));
+
+  // Staggered chapters
+  document.querySelectorAll('.chapter-card').forEach((card, i) => {
+    card.style.transitionDelay = `${i * 0.08}s`;
+  });
+
+  document.querySelectorAll('.testimonial-card').forEach((card, i) => {
+    card.style.transitionDelay = `${i * 0.1}s`;
+  });
+</script>
+</body>
+</html>
